@@ -1,0 +1,45 @@
+import random
+
+def getList():
+    file = open('C:\\Users\\177539\PycharmProjects\BlockChain\Text', 'r')
+    lines = file.readline()
+
+    list = lines.split(",")
+    return list
+
+def printAll(list):
+    count = 0
+    for x in list:
+        count = count + 1
+        print(str(count) + " " + x)
+
+def add(current, name):
+    current.append(name)
+    try:
+        current.remove("")
+    except:
+        pass
+
+    file = open('C:\\Users\\177539\PycharmProjects\BlockChain\Text', 'w')
+    for x in current:
+        file.write("," + x)
+    return current
+
+def remove(current, user):
+    try: current.remove(user)
+    except: print("User is not found in queue")
+    try:
+        current.remove("")
+    except:
+        pass
+
+    file = open('C:\\Users\\177539\PycharmProjects\BlockChain\Text', 'w')
+    for x in current:
+        file.write("," + x)
+    return current
+
+list = getList()
+list = add(list, "Noah" + str(random.randint(1, 5)))
+list = add(list, "Ben" + str(random.randint(1, 5)))
+remove(list, "Noah1")
+printAll(list)
